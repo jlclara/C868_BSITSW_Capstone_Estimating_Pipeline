@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="827.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EstimatingPipeline.ProjectsController">
+   <children>
+      <Text layoutX="33.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bids">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button fx:id="projectNewBtn" layoutX="559.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleNewProject" prefHeight="36.0" prefWidth="71.0" text="NEW" />
+      <Button fx:id="projectEditBtn" layoutX="642.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleEditProject" prefHeight="36.0" prefWidth="71.0" text="EDIT" />
+      <Button fx:id="projectDeleteBtn" layoutX="725.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleDeleteProject" prefHeight="36.0" prefWidth="71.0" text="DELETE" />
+      <Button fx:id="backBtn" cancelButton="true" layoutX="33.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleBackBtn" prefHeight="36.0" prefWidth="101.0" text="Back" />
+      <TableView fx:id="projectTableView" editable="true" layoutX="34.0" layoutY="111.0" prefHeight="332.0" prefWidth="763.0" style="-fx-background-color: #fcfcfc;">
+         <columns>
+            <TableColumn fx:id="projectIdCol" editable="false" prefWidth="29.0" text="ID" />
+            <TableColumn fx:id="dueCol" editable="false" prefWidth="94.0" text="Due" />
+            <TableColumn fx:id="titleCol" editable="false" prefWidth="155.0" text="Project Title" />
+            <TableColumn fx:id="categoryCol" editable="false" prefWidth="119.0" text="Category" />
+            <TableColumn fx:id="statusCol" editable="false" prefWidth="94.0" text="Status" />
+            <TableColumn fx:id="clientCol" editable="false" prefWidth="131.0" text="Client" />
+            <TableColumn fx:id="estimatorCol" editable="false" prefWidth="137.0" text="Estimator" />
+         </columns>
+      </TableView>
+      <ToolBar fx:id="toolBar" layoutX="34.0" layoutY="71.0" prefHeight="40.0" prefWidth="763.0">
+        <items>
+          <Button fx:id="btnActive" mnemonicParsing="false" onAction="#getActiveTab" style="-fx-background-color: #f2f2f2; -fx-border-color: black;" text="Active">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="btnPending" mnemonicParsing="false" onAction="#getActiveTab" style="-fx-background-color: #f2f2f2; -fx-border-color: black;" text="Pending" />
+            <Button fx:id="btnNRewarded" mnemonicParsing="false" onAction="#getActiveTab" style="-fx-background-color: #f2f2f2; -fx-border-color: black;" text="Not Awarded" />
+            <Button fx:id="btnRewarded" mnemonicParsing="false" onAction="#getActiveTab" style="-fx-background-color: #f2f2f2; -fx-border-color: black;" text="Awarded" />
+            <Button fx:id="btnAll" mnemonicParsing="false" onAction="#getActiveTab" style="-fx-background-color: #f2f2f2; -fx-border-color: black;" text="All" />
+        </items>
+      </ToolBar>
+   </children>
+</Pane>
