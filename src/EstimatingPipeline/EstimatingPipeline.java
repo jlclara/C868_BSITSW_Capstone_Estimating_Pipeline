@@ -20,7 +20,7 @@ public class EstimatingPipeline extends Application {
     private static Connection connection;
     private Stage primaryStage;
     private Stage popStage = new Stage();
-    private Scene lgscene, mscene, cuscene, ascene, rscene, escene, uscene;
+    private Scene scene, mscene, cuscene, pscene, rscene, escene, uscene;
 
     
     @Override
@@ -34,6 +34,7 @@ public class EstimatingPipeline extends Application {
     }
    
     
+    
     public void showLogin() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -41,20 +42,21 @@ public class EstimatingPipeline extends Application {
             Pane loginPane = (Pane) loader.load();
             LoginController lController = loader.getController();
             lController.setupLogin(this);
-            lgscene = new Scene(loginPane);
-            primaryStage.setScene(lgscene);
+            scene = new Scene(loginPane);
+            primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
+    // need to condense this -- could pass in string for resource and controller?
     public void showMainMenu (User activeUser) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/MainMenu.fxml"));
-            Pane menuLayout = (Pane) loader.load();
-            mscene = new Scene(menuLayout);
+            Pane layout = (Pane) loader.load();
+            mscene = new Scene(layout);
             primaryStage.setScene(mscene);
             MainMenuController controller = loader.getController();
             controller.setupMenu(this, activeUser);
@@ -99,8 +101,8 @@ public class EstimatingPipeline extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/Projects.fxml"));
             Pane projLayout = (Pane)loader.load();
-            ascene = new Scene(projLayout);
-            primaryStage.setScene(ascene);
+            pscene = new Scene(projLayout);
+            primaryStage.setScene(pscene);
             ProjectsController controller = loader.getController();
             controller.setupProjects(this, activeUser);
             primaryStage.show();
@@ -144,7 +146,7 @@ public class EstimatingPipeline extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/ClientFields.fxml"));
             Pane customerFLayout = (Pane) loader.load();
-            Scene scene = new Scene(customerFLayout);
+            scene = new Scene(customerFLayout);
             popStage.setScene(scene);     
             ClientFieldsController controller = loader.getController();
             controller.setUpClientFields(this, activeUser);
@@ -159,7 +161,7 @@ public class EstimatingPipeline extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/EstimatorFields.fxml"));
             Pane estimatorFLayout = (Pane) loader.load();
-            Scene scene = new Scene(estimatorFLayout);
+            scene = new Scene(estimatorFLayout);
             popStage.setScene(scene);     
             EstimatorFieldsController controller = loader.getController();
             controller.setUpEstimatorFields(this, activeUser);
@@ -174,7 +176,7 @@ public class EstimatingPipeline extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/ProjectFields.fxml"));
             Pane projectFLayout = (Pane) loader.load();
-            Scene scene = new Scene(projectFLayout);
+            scene = new Scene(projectFLayout);
             popStage.setScene(scene);
             ProjectFieldsController controller = loader.getController();
             controller.setUpProjectFields(this, activeUser);
@@ -189,7 +191,7 @@ public class EstimatingPipeline extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/UserFields.fxml"));
             Pane projectFLayout = (Pane) loader.load();
-            Scene scene = new Scene(projectFLayout);
+            scene = new Scene(projectFLayout);
             popStage.setScene(scene);
             UserFieldsController controller = loader.getController();
             controller.setUpUserFields(this, activeUser);
@@ -204,7 +206,7 @@ public class EstimatingPipeline extends Application {
         
         // following code is used to refresh the active scene contents
         Scene activeScene = primaryStage.getScene();
-        if (activeScene == ascene)
+        if (activeScene == pscene)
             showProjects(currentUser);
         else if (activeScene == rscene)
             showReports(currentUser);
